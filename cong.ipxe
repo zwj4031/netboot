@@ -4,13 +4,14 @@ ifopen net0
 ifstat
 
 set menu-timeout 9999999999
+    set booturl https://github.com/zwj4031/netboot/raw/master 
    iseq ${platform} efi && set menu-default win64 || set menu-default win32
   
    
 :start
   menu iPXE Boot Menu --${platform}--${ip}
   item --gap --             --------------------------------- PE --------------------------------
-  item 
+  item grubfmiso            grubfm-bios
   item win32                Windows10 PE x86
   item 
   item win64                Windows10 PE x64 
@@ -34,7 +35,10 @@ set menu-timeout 9999999999
 
 :local
   sanboot --no-describe --drive 0x80
-
+:grubfmiso
+:TangoPE
+  initrd ${booturl}/grubfm.iso
+  chain ${booturl}/memdisk iso raw
 :shell
   echo Type 'exit' to get the back to the menu
   shell
@@ -55,28 +59,7 @@ set menu-timeout 9999999999
   set pefile pe64.wim
   goto bootpe
 
-:winefi
 
-
-  initrd file:/app/wimboot/bcd  bcd || goto retry
-
-  initrd file:/app/wimboot/boot.sdi   boot.sdi  || goto retry
-  initrd file:/app/wimboot/bootmgfw.efi   bootmgfw.efi || goto retry
-  initrd -n boot.wim file:/boot/pe64.WIM || goto retry
-
-  boot || goto retry
-
-  goto start
-
-:bootpe
-  kernel file:/app/wimboot/wimboot || goto retry 
-  initrd file:/efi/microsoft/boot/fonts/segmono_boot.ttf  segmono_boot.ttf || initrd file:/efi/microsoft/boot/fonts/segoe_slboot.ttf  segoe_slboot.ttf || initrd file:/efi/microsoft/boot/fonts/segoen_slboot.ttf segoen_slboot.ttf || initrd file:/efi/microsoft/boot/fonts/wgl4_boot.ttf     wgl4_boot.ttf
-  goto winefi
-
-   boot || goto retry
-  goto start
-
-:retry
   imgfree
   prompt Error! press any key to retry
   goto start
