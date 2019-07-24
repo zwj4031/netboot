@@ -1,8 +1,6 @@
 #!ipxe
 
 set bootgithub https://raw.githubusercontent.com/zwj4031/netboot/master  
-
-
 set booturlgitee https://gitee.com/zwj4031/netboot/raw/master
 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 #ifopen net0
@@ -17,7 +15,7 @@ set menu-timeout 9999999999
   menu ShiShangZuiWeiDaWangGuan NetBoot iPXE Boot Menu --${platform}--${ip}--github
   item --gap --             --------------------------------- PE --------------------------------
   item grubfmiso            grubfm-bios
-  item pxepeiso             pxepe-bios
+  item pxepeiso             pxepe-bios test
   item --gap --             -------------------------------- TOOL --------------------------------
   item
   item winmem               Windows Memmory Diagnostic
@@ -41,8 +39,8 @@ set menu-timeout 9999999999
    initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
   chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
 :pxepeiso
-  initrd ${bootgitee}/bios/iso/pxepe.iso || initrd ${bootgithub}/bios/iso/pxepe.iso
-  chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw 
+  initrd ${bootgitee}/bios/iso/pxepe.iso
+  chain ${bootgitee}/memdisk iso raw
 :shell
   echo Type 'exit' to get the back to the menu
   shell
