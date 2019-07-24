@@ -15,7 +15,7 @@ set menu-timeout 9999999999
   menu ShiShangZuiWeiDaWangGuan NetBoot iPXE Boot Menu --${platform}--${ip}--github
   item --gap --             --------------------------------- PE --------------------------------
   item grubfmiso            grubfm-bios
-  item pxepeiso             pxepe-bios test
+  item sbiso                grubfm -bios SB
   item sanbootpxepeiso      sanboot pxepe-bios test
   item --gap --             -------------------------------- TOOL --------------------------------
   item
@@ -39,9 +39,9 @@ set menu-timeout 9999999999
 :grubfmiso
    initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
   chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
-:pxepeiso
-  initrd ${bootgitee}/bios/iso/pxepe.iso
-  chain ${bootgitee}/memdisk iso raw
+:sbiso
+   initrd ${bootgitee}/bios/iso/sb.iso || initrd ${bootgithub}/bios/iso/sb.iso
+  chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
   
   
  :sanbootpxepeiso
