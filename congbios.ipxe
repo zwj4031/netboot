@@ -37,11 +37,11 @@ set menu-timeout 9999999999
 :local
   sanboot --no-describe --drive 0x80
 :grubfmiso
-   initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
+ initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
   chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
 :sbiso
-  initrd ${bootgitee}/sb.iso || initrd ${bootgithub}/sb.iso
-  chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
+  initrd ${bootgitee}/sb.iso
+  chain ${bootgitee}/memdisk iso raw
   
   
  :sanbootpxepeiso
