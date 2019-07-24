@@ -1,9 +1,4 @@
 #!ipxe
-  isset ${ip} || dhcp
-
-  chain --autofree https://boot.netboot.xyz
-  boot  || goto failed
-#!ipxe
 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 ifopen net0
 ifstat
