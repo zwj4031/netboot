@@ -1,5 +1,4 @@
 #!ipxe
-
 set bootgithub https://raw.githubusercontent.com/zwj4031/netboot/master  
 set bootgitee https://gitee.com/zwj4031/netboot/raw/master
 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
@@ -40,8 +39,8 @@ set menu-timeout 9999999999
  initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
   chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
 :sbiso
-  initrd ${bootgitee}/sb.iso
-  chain ${bootgitee}/memdisk iso raw
+initrd ${bootgitee}/sb.iso  || initrd ${bootgithub}/sb.iso
+chain ${bootgitee}/memdisk iso raw  || initrd ${bootgithub}/memdisk iso raw 
   
   
  :sanbootpxepeiso
