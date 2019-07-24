@@ -4,7 +4,7 @@ ifopen net0
 ifstat
 
 set menu-timeout 9999999999
-    set booturl https://github.com/zwj4031/netboot/raw/master 
+    set booturl https://gitee.com/zwj4031/netboot/raw/master
    iseq ${platform} efi && set menu-default win64 || set menu-default win32
   
    
