@@ -16,6 +16,7 @@ set menu-timeout 9999999999
   item --gap --             --------------------------------- PE --------------------------------
   item grubfmiso            grubfm-bios
   item pxepeiso             pxepe-bios test
+  item sanbootpxepeiso      sanboot pxepe-bios test
   item --gap --             -------------------------------- TOOL --------------------------------
   item
   item winmem               Windows Memmory Diagnostic
@@ -41,6 +42,12 @@ set menu-timeout 9999999999
 :pxepeiso
   initrd ${bootgitee}/bios/iso/pxepe.iso
   chain ${bootgitee}/memdisk iso raw
+  
+  
+ :sanbootpxepeiso
+sanboot --drive 0xff ${bootgitee}/bios/iso/pxepe.iso
+
+
 :shell
   echo Type 'exit' to get the back to the menu
   shell
