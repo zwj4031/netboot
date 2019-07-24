@@ -9,7 +9,7 @@ set menu-timeout 9999999999
   
    
 :start
-  menu iPXE Boot Menu --${platform}--${ip}
+  menu ShiShangZuiWeiDaWangGuan NetBoot iPXE Boot Menu --${platform}--${ip}
   item --gap --             --------------------------------- PE --------------------------------
   item grubfmiso            grubfm-bios
   item win32                Windows10 PE x86
