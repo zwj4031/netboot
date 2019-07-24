@@ -2,7 +2,7 @@
 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 #ifopen net0
 #ifstat
-
+#???????
 set menu-timeout 9999999999
     set booturl https://gitee.com/zwj4031/netboot/raw/master
    iseq ${platform} efi && set menu-default win64 || set menu-default win32
