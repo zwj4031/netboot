@@ -40,13 +40,9 @@ set menu-timeout 99
  initrd ${bootgitee}/bios/grubfm.iso || initrd ${bootgithub}/bios/grubfm.iso
   chain ${bootgitee}/bios/memdisk iso raw || chain ${bootgithub}/bios/memdisk iso raw
 :sbiso
-<<<<<<< .merge_file_a07348
 initrd ${bootgithub}/sb.iso || initrd ${bootgitee}/sb.iso
 chain ${bootgithub}/bios/memdisk iso raw || initrd ${bootgitee}/bios/memdisk iso raw 
-=======
-initrd ${bootgitee}/sb.iso || initrd ${bootgithub}/sb.iso
-chain ${bootgitee}/bios/memdisk iso raw || initrd ${bootgithub}/bios/memdisk iso raw 
->>>>>>> .merge_file_a07644
+
 :biosmenu
  chain ${bootgithub}/biosmenu
   
