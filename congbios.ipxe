@@ -4,7 +4,7 @@ set bootgitee https://gitee.com/zwj4031/netboot/raw/master
 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 #ifopen net0
 #ifstat
-
+#test
 
 set menu-timeout 9999999999
  iseq ${platform} efi && set menu-default win64 || set menu-default win32
