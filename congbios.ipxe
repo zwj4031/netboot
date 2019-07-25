@@ -15,7 +15,7 @@ set menu-timeout 9999999999
   item --gap --             --------------------------------- PE --------------------------------
   item grubfmiso            grubfm-bios
   item sbiso                grubfm -bios SB
-  item sanbootpxepeiso      sanboot pxepe-bios test
+  item sbisogitee           grubfm -bios SB -gitee
   item --gap --             -------------------------------- TOOL --------------------------------
   item
   item winmem               Windows Memmory Diagnostic
@@ -39,8 +39,13 @@ set menu-timeout 9999999999
  initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
   chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
 :sbiso
+<<<<<<< .merge_file_a07348
 initrd ${bootgithub}/sb.iso || initrd ${bootgitee}/sb.iso
 chain ${bootgithub}/memdisk iso raw || initrd ${bootgitee}/memdisk iso raw 
+=======
+initrd ${bootgitee}/sb.iso || initrd ${bootgithub}/sb.iso
+chain ${bootgitee}/memdisk iso raw || initrd ${bootgithub}/memdisk iso raw 
+>>>>>>> .merge_file_a07644
   
   
  :sanbootpxepeiso
