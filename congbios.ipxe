@@ -6,13 +6,14 @@ prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && sh
 #ifstat
 #test
 
-set menu-timeout 9999999999
- iseq ${platform} efi && set menu-default win64 || set menu-default win32
+set menu-timeout 99
+ iseq ${platform} efi && set menu-default efimenu || set menu-default biosmenu
   
    
 :start
   menu ShiShangZuiWeiDaWangGuan NetBoot iPXE Boot Menu --${platform}--${ip}--github
   item --gap --             --------------------------------- PE --------------------------------
+  item biosmenu             bios menu
   item grubfmiso            grubfm-bios
   item sbiso                grubfm -bios SB
   item sbisogitee           grubfm -bios SB -gitee
@@ -36,17 +37,18 @@ set menu-timeout 9999999999
 :local
   sanboot --no-describe --drive 0x80
 :grubfmiso
- initrd ${bootgitee}/grubfm.iso || initrd ${bootgithub}/grubfm.iso
-  chain ${bootgitee}/memdisk iso raw || chain ${bootgithub}/memdisk iso raw
+ initrd ${bootgitee}/bios/grubfm.iso || initrd ${bootgithub}/bios/grubfm.iso
+  chain ${bootgitee}/bios/memdisk iso raw || chain ${bootgithub}/bios/memdisk iso raw
 :sbiso
 <<<<<<< .merge_file_a07348
 initrd ${bootgithub}/sb.iso || initrd ${bootgitee}/sb.iso
-chain ${bootgithub}/memdisk iso raw || initrd ${bootgitee}/memdisk iso raw 
+chain ${bootgithub}/bios/memdisk iso raw || initrd ${bootgitee}/bios/memdisk iso raw 
 =======
 initrd ${bootgitee}/sb.iso || initrd ${bootgithub}/sb.iso
-chain ${bootgitee}/memdisk iso raw || initrd ${bootgithub}/memdisk iso raw 
+chain ${bootgitee}/bios/memdisk iso raw || initrd ${bootgithub}/bios/memdisk iso raw 
 >>>>>>> .merge_file_a07644
-  
+:biosmenu
+ chain ${bootgithub}/biosmenu
   
  :sanbootpxepeiso
 sanboot --drive 0xff ${bootgitee}/bios/iso/pxepe.iso
