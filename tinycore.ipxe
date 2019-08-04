@@ -1,12 +1,13 @@
 #!ipxe
 set bootgithub https://raw.githubusercontent.com/zwj4031/netboot/master  
 set bootgitee https://gitee.com/zwj4031/netboot/raw/master
-prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell
 #ifopen net0
 #ifstat
 #test
 
-set menu-timeout 99999999
+set menu-timeout 8000000
+   set menu-default sbiso
  iseq ${platform} efi && set menu-default efimenu || set menu-default biosmenu
   
    
