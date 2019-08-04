@@ -1,0 +1,73 @@
+#!ipxe
+set bootgithub https://raw.githubusercontent.com/zwj4031/netboot/master  
+set bootgitee https://gitee.com/zwj4031/netboot/raw/master
+prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+#ifopen net0
+#ifstat
+#test
+
+set menu-timeout 99
+ iseq ${platform} efi && set menu-default efimenu || set menu-default biosmenu
+  
+   
+:start
+  menu ShiShangZuiWeiDaWangGuan NetBoot iPXE Boot Menu --${platform}--${ip}--github
+  item --gap --             --------------------------------- PE --------------------------------
+  item biosmenu             bios menu
+  item grubfmiso            grubfm-bios
+  item sbiso                grubfm -bios SB
+  item sbisogitee           grubfm -bios SB -gitee
+  item --gap --             -------------------------------- TOOL --------------------------------
+  item
+  item winmem               Windows Memmory Diagnostic
+  item memtest              Memtest86+ 5.01  ---- online
+  item test                 ${xieyi} ----  select change 
+  item
+  item --gap --             ---------------------------- Advanced options -----------------------
+  item
+  item msboot               Enter Windows Boot Manager Menu （BIOS)
+  item --key c config       Configure settings                                   -- c
+  item shell                Drop to iPXE shell
+  item reboot               Reboot computer
+  item --key h local        Boot from local drive                                -- h
+  item --key x exit         Exit iPXE and continue BIOS boot                     -- x
+  choose --timeout ${menu-timeout} --default ${menu-default} selected
+  goto ${selected}
+
+:local
+  sanboot --no-describe --drive 0x80
+:grubfmiso
+ initrd ${bootgitee}/bios/grubfm.iso || initrd ${bootgithub}/bios/grubfm.iso
+  chain ${bootgitee}/bios/memdisk iso raw || chain ${bootgithub}/bios/memdisk iso raw
+:sbiso
+initrd ${bootgithub}/sb.iso || initrd ${bootgitee}/sb.iso
+chain ${bootgithub}/bios/memdisk iso raw || initrd ${bootgitee}/bios/memdisk iso raw 
+
+:biosmenu
+ chain ${bootgithub}/biosmenu
+  
+ :sanbootpxepeiso
+sanboot --drive 0xff ${bootgitee}/bios/iso/pxepe.iso
+
+
+:shell
+  echo Type 'exit' to get the back to the menu
+  shell
+  goto start
+ 
+:reboot
+  reboot
+ 
+:exit
+  exit
+
+:config
+  config
+  goto start
+
+
+
+
+  imgfree
+  prompt Error! press any key to retry
+  goto start
