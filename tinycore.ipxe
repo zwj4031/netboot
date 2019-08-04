@@ -6,7 +6,7 @@ prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && sh
 #ifstat
 #test
 
-set menu-timeout 99
+set menu-timeout 99999999
  iseq ${platform} efi && set menu-default efimenu || set menu-default biosmenu
   
    
