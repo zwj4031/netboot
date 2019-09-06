@@ -1,5 +1,5 @@
 #tar -zcvf samba.gz samba3
-
+rm -f /etc/profile.d/getsh.sh
 set -- $(cat /proc/cmdline)
 for x in "$@"; do
 case "$x" in
