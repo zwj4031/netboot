@@ -4,7 +4,7 @@ killall smbd
 rm -f /usr/local/etc/samba/smb.conf
 cd /var/lib/tftpboot/app/tcz
 
-tar -xvf samba3.gz -C /var/lib/tftpboot/app/tcz/
+tar -xvf /var/lib/tftpboot/app/tcz/samba3.gz -C /var/lib/tftpboot/app/tcz/
 su tc -c 'tce-load -i /var/lib/tftpboot/app/tcz/samba3/samba3.tcz'
 sudo cat << EOF > /usr/local/etc/samba/smb.conf
 

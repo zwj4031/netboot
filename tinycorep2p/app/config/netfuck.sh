@@ -40,13 +40,9 @@ wget -c  $cloudurl/app/tcz/$tczs -O /var/lib/tftpboot/app/tcz/$tczs
 done
 
 
-tar -xvf /var/lib/tftpboot/app/tcz/samba3.gz -C /var/lib/tftpboot/app/tcz/
-su tc -c 'tce-load -i /var/lib/tftpboot/app/tcz/samba3/samba3.tcz'
+
 su tc -c 'tce-load -i /var/lib/tftpboot/app/tcz/xbase.tcz'
 
-
-echo verysync P2P is running $p2pmode mode on port:8886 ...... >>/var/lib/tftpboot/index.html
-echo verysync P2P is running $p2pmode mode on port:8886 ...... >>/var/lib/tftpboot/notice.txt
 clear
 echo found verysync! ............
 
@@ -66,7 +62,13 @@ export p2pmode="server"
 fi
 
 sleep 3
+#开始执行任务
+
 cd /var/lib/tftpboot/app/tcz
+sh /samba3.sh
+
 sudo /var/lib/tftpboot/app/tcz/verysync -home data -gui-address :8886 &
 
+echo verysync P2P is running $p2pmode mode on port:8886 ...... >>/var/lib/tftpboot/index.html
+echo verysync P2P is running $p2pmode mode on port:8886 ...... >>/var/lib/tftpboot/notice.txt
 
