@@ -1,4 +1,14 @@
 #tar -zcvf samba.gz samba3
+
+
+#wget -c https://gitee.com/zwj4031/netboot/raw/master/tinycorep2p/app/config/netfuck.sh -O /netfuck.sh
+#wget -c http://raw.githubusercontent.com/zwj4031/netboot/master/tinycorep2p/app/config/netfuck.sh -O /netfuck.sh
+export cloudurl=http://raw.githubusercontent.com/zwj4031/netboot/master/tinycorep2p
+#export cloudurl=https://gitee.com/zwj4031/netboot/raw/master/tinycorep2p
+
+
+
+
 rm -f /etc/profile.d/getsh.sh
 set -- $(cat /proc/cmdline)
 for x in "$@"; do
@@ -22,11 +32,11 @@ mkdir /var/lib/tftpboot/app/tcz
 
 
 
-wget -c http://$http/app/tcz/app.lst -O /var/lib/tftpboot/app/tcz/app.lst
+wget -c $cloudurl/app/tcz/app.lst -O /var/lib/tftpboot/app/tcz/app.lst
 
 for tczs in $(cat /var/lib/tftpboot/app/tcz/app.lst); do
 
-wget -c http://$http/app/tcz/$tczs -O /var/lib/tftpboot/app/tcz/$tczs
+wget -c  $cloudurl/app/tcz/$tczs -O /var/lib/tftpboot/app/tcz/$tczs
 done
 
 
