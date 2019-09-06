@@ -1,0 +1,32 @@
+=============== Sep 3, 2019 (UTC) ===============
+19:02:05.693099 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+19:02:05.693221 db@open opening
+19:02:05.701165 version@stat F·[] S·0B[] Sc·[]
+19:02:05.702290 db@janitor F·2 G·0
+19:02:05.702321 db@open done T·9.088425ms
+19:02:17.090529 db@close closing
+19:02:17.090696 db@close done T·165.9µs
+=============== Sep 3, 2019 (UTC) ===============
+19:02:55.011199 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+19:02:55.013444 version@stat F·[] S·0B[] Sc·[]
+19:02:55.013656 db@open opening
+19:02:55.013788 journal@recovery F·1
+19:02:55.020592 journal@recovery recovering @1
+19:02:55.021026 memdb@flush created L0@2 N·3 S·175B "\ndb..ion,v2":"\npr..ion,v3"
+19:02:55.027918 version@stat F·[1] S·175B[175B] Sc·[0.25]
+19:02:55.028195 db@janitor F·3 G·0
+19:02:55.028230 db@open done T·14.563099ms
+19:04:56.644941 db@close closing
+19:04:56.645143 db@close done T·199.87µs
+=============== Sep 3, 2019 (UTC) ===============
+19:04:57.727767 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+19:04:57.728020 version@stat F·[1] S·175B[175B] Sc·[0.25]
+19:04:57.728067 db@open opening
+19:04:57.728161 journal@recovery F·1
+19:04:57.735189 journal@recovery recovering @3
+19:04:57.735666 memdb@flush created L0@5 N·6 S·282B "\x04A3..can,v10":"\t\x00\x00\x00\x00,v7"
+19:04:57.743217 version@stat F·[2] S·457B[457B] Sc·[0.50]
+19:04:57.743840 db@janitor F·4 G·0
+19:04:57.743861 db@open done T·15.783861ms
+19:15:09.471515 db@close closing
+19:15:09.471610 db@close done T·95.21µs
